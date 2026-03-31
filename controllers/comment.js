@@ -3,7 +3,7 @@ import Task from "../models/Task.js";
 import ActivityLog from "../models/ActivityLog.js";
 
 export const comments = async (req, res) => {
-  // authenticate middleware enforced in route
+  
   try {
     const task = await Task.findByPk(req.params.id);
     if (!task) return res.status(404).json({ message: "Task not found" });
