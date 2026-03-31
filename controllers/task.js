@@ -3,7 +3,7 @@ import User from "../models/User.js";
 import ActivityLog from "../models/ActivityLog.js";
 
 export const createTask = async (req, res) => {
-  // requireRole("project_manager") enforced in route
+ 
   try {
     const task = await Task.create({
       project_id: req.body.project_id,
@@ -25,7 +25,7 @@ export const createTask = async (req, res) => {
 };
 
 export const deleteTask = async (req, res) => {
-  // requireRole("project_manager") enforced in route
+  
   try {
     const deleted = await Task.destroy({ where: { id: req.params.id } });
     if (!deleted) return res.status(404).json({ message: "Task not found" });
@@ -39,7 +39,7 @@ export const deleteTask = async (req, res) => {
 };
 
 export const updateTask = async (req, res) => {
-  // Allowed for: project_manager OR the user assigned to the task
+ 
   try {
     const task = await Task.findByPk(req.params.id);
     if (!task) return res.status(404).json({ message: "Task not found" });
