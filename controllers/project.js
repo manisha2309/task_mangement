@@ -2,7 +2,7 @@ import Project from "../models/Project.js";
 import ActivityLog from "../models/ActivityLog.js";
 
 export const createProject = async (req, res) => {
-  // requireRole("admin") enforced in route
+ 
   try {
     const existing = await Project.findOne({ where: { project_name: req.body.name } });
     if (existing) return res.status(400).json({ message: "Project already exists!" });
@@ -35,7 +35,7 @@ export const getAllProjects = async (req, res) => {
 };
 
 export const deleteProjects = async (req, res) => {
-  // requireRole("admin") enforced in route
+ 
   try {
     const deleted = await Project.destroy({ where: { id: req.params.id } });
     if (!deleted) return res.status(404).json({ message: "Project not found" });
