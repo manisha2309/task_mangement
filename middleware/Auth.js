@@ -2,10 +2,7 @@ import jwt from "jsonwebtoken";
 
 const SECRET = "secretkey";
 
-/**
- * Attaches decoded JWT payload to req.user.
- * Use requireRole(...roles) to additionally gate by role.
- */
+
 export const authenticate = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
